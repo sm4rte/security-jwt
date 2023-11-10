@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registration</title>
+</head>
+<body>
+<h2>Registration</h2>
+
+<div id="registration-form">
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <input type="password" id="confirmPassword" placeholder="Confirm Password">
+    <input type="email" id="email" placeholder="Email">
+    <button onclick="registerUser()">Register</button>
+</div>
+
+<script>
+    function registerUser() {
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        var confirmPassword = document.getElementById('confirmPassword').value;
+        var email = document.getElementById('email').value;
+
+        var registrationData = {
+            "username": username,
+            "password": password,
+            "confirmPassword": confirmPassword,
+            "email": email
+        };
+
+        fetch('/registration', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(registrationData),
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Handle the response data if needed
+                console.log('Registration successful:', data);
+            })
+            .catch(error => {
+                console.error('Error during registration:', error.message);
+            });
+    }
+</script>
+</body>
+</html>

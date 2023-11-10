@@ -1,0 +1,23 @@
+spring:
+  application:
+    security-jwt
+  jpa:
+    database: postgresql
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  main:
+    allow-circular-references: true
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url:  jdbc:postgresql://localhost:5432/jwt
+    username: postgres
+    password: 12345
+server:
+  port: 8090
+
+jwt:
+  secret: 56sdf4ds4fds4f6sd2fdsfds9f4dg4df6gdf6fadsfaf4easd5sa
+  lifetime: 30m
