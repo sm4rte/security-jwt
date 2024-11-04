@@ -1,6 +1,14 @@
 spring:
   application:
     security-jwt
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      username: root
+#      password: secret
+#      database: test
+      auto-index-creation: true
   jpa:
     database: postgresql
     hibernate:
